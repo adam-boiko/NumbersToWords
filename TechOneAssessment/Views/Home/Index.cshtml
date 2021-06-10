@@ -9,15 +9,23 @@
 {
     
     <div class="form-group">
-        @Html.LabelFor(model => model.Numbers, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(model => model.Numbers, 
+                new { @class = "col-md-2" })
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.Numbers, new { @class = "form-control", @onchange = "this.form.submit()" })
+            @Html.TextBoxFor(model => model.Numbers,
+                    new {type = "number",
+                        @onchange = "this.form.submit()",
+                        min ="1", max= "1000000000000000000"
+                    })
+            @Html.ValidationMessageFor(model => model.Numbers)
         </div>
     </div>
     <div>
-        @Html.LabelFor(model => model.Words, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(model => model.Words, 
+                new { @class = "col-md-2" })
         <div class="col-md-10">
-            @Html.DisplayFor(model => model.Words, new  {@readonly = true})
+            @Html.DisplayFor(model => model.Words, 
+                    new {@readonly = true})
         </div>
     </div>
 }

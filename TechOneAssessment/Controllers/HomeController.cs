@@ -20,11 +20,17 @@ namespace TechOneAssessment.Controllers
         [HttpPost]
         public ActionResult Index(IndexViewModel model)
         {
-            if (model.Numbers > 0)
+            if (ModelState.IsValid)
             {
-                model.Words = NumbersToWords.ConvertToWords(model.Numbers);
+                try 
+                { 
+                    model.Words = NumbersToWords.ConvertToWords(model.Numbers);
+                }
+                catch
+                {
+                    model.Words = string.Format("Number {0} is not accepted", model.Numbers);
+                }
             }
-            
             return View(model);
         }
 

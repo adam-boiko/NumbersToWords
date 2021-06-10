@@ -841,8 +841,19 @@ pre code {
 .col-md-7,
 .col-md-8,
 .col-md-9,
-.col-md-10,
-.col-md-11,
+.col-md-10 {
+    position: relative;
+    min-height: 1px;
+    padding-top: 0px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.col-md-11 {
+    position: relative;
+    padding-bottom: 0px;
+    padding-right: 20px;
+    padding-left: 182px;
+}
 .col-md-12,
 .col-lg-1,
 .col-lg-2,
@@ -1094,6 +1105,8 @@ pre code {
   .col-md-10,
   .col-md-11 {
     float: left;
+    padding-top: 20px;
+    padding-left: 30px;
   }
   .col-md-1 {
     width: 8.333333333333332%;
