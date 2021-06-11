@@ -5,13 +5,19 @@ using TechOneAssessment.Models;
 
 namespace TechOneAssessment.Controllers
 {
-    static internal class NumbersToWords
+    public class NumbersToWords
     {
         public static String ConvertToWords(double numbers)
         {
             var words = new StringBuilder();
             NumbersToWordsModel model = new NumbersToWordsModel();
-            
+
+            //Validation on Backend for numbers
+            if (ValidateNumbers(numbers, words))
+            {
+                return ValidationFailed(words);
+            }
+
             //Creates another variable to store non-decimal numbers.
             long wholeNumber = (long)numbers;
 
@@ -24,20 +30,36 @@ namespace TechOneAssessment.Controllers
             return words.ToString();
         }
 
+        private static string ValidationFailed(StringBuilder words)
+        {
+            words.Append("Invalid Number");
+            return words.ToString();
+        }
+
+        private static Boolean ValidateNumbers(double numbers, StringBuilder words)
+        {
+            if (numbers < 0 || numbers > 1000000000000000)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+
         private static string DecimalBuilder(NumbersToWordsModel model, double numbers, StringBuilder words)
         {
-            int decNumber = 0;
+            long decNumber = 0;
 
             //Checks if number contains decimal numbers, then sets decNumber .
             if ((numbers % 1) > 0)
             {
-                double i = (numbers % 1) * 100;
-                decNumber = (int)i;
+                decimal i = (decimal)numbers;
+                i = (i - Math.Truncate(i)) * 100;
+                decNumber = (long)i;
             }
             //If number did contain decimals, decNumber will be greater than 0.
             if (decNumber > 0)
             {
-                words.Append(" and ");
+                words.Append("and");
                 //Call WordBuilder method with decNumber.
                 WordBuilder(model, decNumber, words);
                 words.Append(" cents");
