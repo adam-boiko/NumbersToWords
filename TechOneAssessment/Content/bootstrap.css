@@ -847,7 +847,7 @@ pre code {
     padding-top: 0px;
     padding-right: 15px;
     padding-left: 15px;
-    font-size: 20px;
+    font-size: 35px;
 }
 .col-md-11 {
     position: relative;
@@ -4208,7 +4208,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-brand {
   float: left;
   padding: 15px 15px;
-  font-size: 18px;
+  font-size: 25px;
   line-height: 20px;
 }
 
